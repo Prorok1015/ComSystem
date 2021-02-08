@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NDbUnit.SqlLite</name>
+    </assembly>
+    <members>
+        <member name="M:NDbUnit.Core.SqlLite.SqlLiteDbCommandBuilder.IsAutoIncrementing(System.Data.DataRow)">
+            <summary>
+            Since SQLite keys are auto incremented by default we need to check to see if the column
+            is a key as well, since not all columns will be marked with AUTOINCREMENT
+            </summary>
+            <param name="row"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NDbUnit.Core.SqlLite.SqlLiteDbOperation.OnInsertIdentity(System.Data.DataTable,System.Data.Common.DbCommand,System.Data.Common.DbTransaction)">
+            <summary>
+            SQLite doesn't need any changes to insert PK values.
+            </summary>
+            <param name="dataTable"></param>
+            <param name="dbCommand"></param>
+            <param name="dbTransaction"></param>
+        </member>
+        <member name="M:NDbUnit.Core.SqlLite.SqlLiteDbOperation.ActivateInsertIdentity(System.String,System.Data.Common.DbTransaction)">
+            <summary>
+            Creates an object to activate or deactivate identity insert
+            </summary>
+            <param name="tableName">The table name to activate the identity insert for</param>
+            <param name="dbTransaction">The current transaction</param>
+            <returns>The new object that - when disposed - deactivates the identity insert</returns>
+        </member>
+        <member name="M:NDbUnit.Core.SqlLite.SqlLiteDbOperation.DisableAllTableConstraints(System.Data.DataSet,System.Data.Common.DbTransaction)">
+            <summary>
+            Disable the constraints for the whole database
+            </summary>
+            <param name="dataSet">The <see cref="T:System.Data.DataSet"/> containing all the tables where the constraints must be disabled</param>
+            <param name="transaction">The transaction used while processing data with disabled constraints</param>
+        </member>
+        <member name="M:NDbUnit.Core.SqlLite.SqlLiteDbOperation.EnableAllTableConstraints(System.Data.DataSet,System.Data.Common.DbTransaction)">
+            <summary>
+            Enable the constraints for the whole database
+            </summary>
+            <param name="dataSet">The <see cref="T:System.Data.DataSet"/> containing all the tables where the constraints must be enabled</param>
+            <param name="transaction">The transaction used while processing data with enabled constraints</param>
+        </member>
+        <member name="M:NDbUnit.Core.SqlLite.SqlLiteDbOperation.DisableTableConstraints(System.Data.DataTable,System.Data.Common.DbTransaction)">
+            <summary>
+            Disable a single tables constraints
+            </summary>
+            <param name="dataTable">The table for which the constraints must be disabled</param>
+            <param name="dbTransaction">The transaction used while processing data with disabled constraints</param>
+            <exception cref="T:System.NotSupportedException">This method isn't supported for SQLite</exception>
+        </member>
+        <member name="M:NDbUnit.Core.SqlLite.SqlLiteDbOperation.EnableTableConstraints(System.Data.DataTable,System.Data.Common.DbTransaction)">
+            <summary>
+            Enable a single tables constraints
+            </summary>
+            <param name="dataTable">The table for which the constraints must be enabled</param>
+            <param name="dbTransaction">The transaction used while processing data with enabled constraints</param>
+            <exception cref="T:System.NotSupportedException">This method isn't supported for SQLite</exception>
+        </member>
+    </members>
+</doc>
